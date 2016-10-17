@@ -31,11 +31,7 @@ f = open('demo-data.txt', 'r')
 # the following does not evaluate, rather the syntax tells Python to create a
 # generator based on the comprehension expression that follows, which in this case
 # just delays reading the file. The returned object is iterable and is lazily-evaluated.
-log_lines = (line for line in f)
+data = (line for line in f)
 
 # you can now iterate through the collection
-# TODO: there is a better way of doing this. left as an exercise to the reader
-first_5_lines = list()
-for x in range(5):
-    first_5_lines.append(log_lines.next())
-print first_5_lines
+first_5_lines = [line for _, line in zip(range(5), data)]
