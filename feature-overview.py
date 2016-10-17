@@ -58,9 +58,12 @@ b('b is called')
 
 # Gotcha about closures - Python binds variables in closures by "name" not by "value"
 # which causes the following code not to behave as intended
+adders = []
+for x in range(5):
+    adders.append(lambda y: x + y)
 
-
-
+alist = [adder(10) for adder in adders]
+blist = [adder(20) for adder in adders]
 
 ################################################################################
 #
@@ -86,24 +89,9 @@ def factorial_iterative(N):
 def factorial_reduce(N):
     return reduce(operator.mul, range(1, N+1), 1)
 
-# Quiz question: what does the following code snippet do
+# using recursion, one can make an entire program based on a simple recursive expressive.
 def identity_print(x):
     print x
     return x
 afunc = lambda: identity_print(raw_input("FP --- ")) == 'quit' or afunc()
 afunc()
-
-################################################################################
-#
-# Itertools overview
-#
-################################################################################
-
-# example of infinite integer stream with count
-astream = itertools.count(0, 1)
-
-# you can grab a sample of stream using takewhile and a lambda
-alist = itertools.takewhile(lambda x: x < 10, astream)
-blist = itertools.takewhile(lambda x: x < 10, astream)
-
-print alist == blist # what do you think the result would be here
