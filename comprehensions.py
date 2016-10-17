@@ -25,8 +25,14 @@ print aset
 # brackets around them (in some contexts though parentheses are required)
 # Generator comprehensions lend
 
+# example: reading in some data
 f = open('demo-data.txt', 'r')
+
+# the following does not evaluate, rather the syntax tells Python to create a
+# generator based on the comprehension expression that follows, which in this case
+# just delays reading the file. The returned object is iterable and is lazily-evaluated.
 log_lines = (line for line in f)
+
 # you can now iterate through the collection
 # TODO: there is a better way of doing this. left as an exercise to the reader
 first_5_lines = list()

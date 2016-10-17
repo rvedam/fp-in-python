@@ -56,6 +56,12 @@ b = create_greeter()
 a('a is called')
 b('b is called')
 
+# Gotcha about closures - Python binds variables in closures by "name" not by "value"
+# which causes the following code not to behave as intended
+
+
+
+
 ################################################################################
 #
 # Recursion overview
@@ -92,3 +98,12 @@ afunc()
 # Itertools overview
 #
 ################################################################################
+
+# example of infinite integer stream with count
+astream = itertools.count(0, 1)
+
+# you can grab a sample of stream using takewhile and a lambda
+alist = itertools.takewhile(lambda x: x < 10, astream)
+blist = itertools.takewhile(lambda x: x < 10, astream)
+
+print alist == blist # what do you think the result would be here

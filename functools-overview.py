@@ -8,6 +8,7 @@
 
 import functools
 
+
 # simple of example of using map
 # you can use map with a named function
 def double(a):
@@ -34,3 +35,10 @@ print another_sum
 # example of using filter
 evens = filter(lambda x: x%2 == 0, alist)
 print evens
+
+# example of partial application with another adder example
+def multiply(a,b):
+    return a * b
+
+double = functools.partial(multiply, 2)
+print double(2)
