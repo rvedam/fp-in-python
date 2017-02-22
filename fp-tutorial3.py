@@ -85,7 +85,7 @@ def factorial(N):
     assert isinstance(N, int) and N >= 1
     return 1 if N <= 1 else N*factorial(N-1)
 
-# clearly this would blow up the recursive stack if we create stack depths > 1000.
+# clearly this would blow up the stack if we create stack depths > 1000.
 # in general this style is discouraged and replaced with a more iterative style
 def factorial_iterative(N):
     result = 1
